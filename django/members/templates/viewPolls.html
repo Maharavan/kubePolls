@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Voting Panel</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<script>
+    function sendInfo(questionId, questionText){
+        fetch('/live-polls/', { 
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+                'X-CSRFToken':document.querySelector('[name=csrfmiddlewaretoken]').value,
+            },
+            body: JSON.stringify({id:questionId, text:questionText})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Response:", data);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    }
+</script>
+<body>
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <h1 class="main-heading"> Live Voting Panel 🗳️</h1>
+    <p class="subheading">Choose your answer by clicking the vote button</p>
+    {% if questions %}
+        <div class="form-question">
+            <div class="question-list">
+                {% for question in questions %}
+                    <div class="question-card">
+                        <a href="/live-polls/?id={{question.id}}&text={{ question.question|urlencode }}">
+                            <label class="question-text" >{{ question.question }}</label>
+                        </a>
+                        <label class="date">Posted on {{question.date}}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p style="text-align:center;">No questions found.</p>
+    {% endif %}
+</body>
+</html>

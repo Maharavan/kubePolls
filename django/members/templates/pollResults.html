@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KubePolls</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/pollResult.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="poll-container">
+        <h3><i class="fas fa-vote-yea"></i> KubePolls</h3>
+
+        <div class="question">
+            <p>{{ question_text }}</p>
+        </div>
+
+        {% if choices %}
+            <div class="choices">
+                {% for choice in choices %}
+                    <label class="choice-option" style="background-size: {{ choice.percent }}% 100%;">
+                        {{ choice.choice }} - {{ choice.percent }}%
+                    </label>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="error-msg">Unable to retrieve data.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

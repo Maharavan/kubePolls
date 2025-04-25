@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KubePolls</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>🗳️ Welcome to the KubePolls!</h1>
+    <p>Cast your vote and make it count — live and transparent!</p>
+
+    <div class="btn-group">
+        <a href="/create-polls/">
+            <button class="poll-btn">🛠️ Create a Poll</button>
+        </a>
+        <a href="/poll-list/">
+            <button class="poll-btn">📊 See Available Polls</button>
+        </a>
+    </div>
+</body>
+</html>
