@@ -85,7 +85,7 @@ def poll_results(request):
     total_votes = sum(ch.vote for ch in choices)
     
     for ch in choices:
-        ch.percent = round((ch.vote / total_votes) * 100, 2) if total_votes > 0 else 0
+        ch.percent = round((ch.vote / total_votes) * 100) if total_votes > 0 else 0
     
     template = loader.get_template('pollResults.html')
     context = {

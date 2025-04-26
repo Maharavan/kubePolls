@@ -105,6 +105,28 @@ button {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+.result-button {
+  display: inline-block;
+  margin-left: 20px; 
+  background-color: #43b6e0;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 0.1px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.result-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
 button:hover {
   background-color: #2980b9;
   transform: translateY(-3px);
@@ -182,7 +204,7 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
   padding-left: 25vh;
-  padding-right: 25vh;    
+  padding-right: 25vh;
 }
 .date {
   font-size: 0.85rem;
@@ -190,14 +212,13 @@ button:hover {
   margin-top: 0.3rem;
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
 }
 .question-list{
   gap: 50px;
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
-
 .question-text {
   color: #040d5c;
   font-size: 1.2rem;

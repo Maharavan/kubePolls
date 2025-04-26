@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="poll-container">
-        <h3><i class="fas fa-vote-yea"></i> KubePolls</h3>
+        <h2><i class="fas fa-vote-yea"></i> KubePolls</h2>
 
         <div class="question">
             <p>{{ question_text }}</p>
@@ -20,8 +20,9 @@
             <div class="choices">
                 {% for choice in choices %}
                     <label class="choice-option" style="background-size: {{ choice.percent }}% 100%;">
-                        {{ choice.choice }} - {{ choice.percent }}%
+                        {{ choice.choice }}  {{ choice.percent }}% 
                     </label>
+                    
                 {% endfor %}
             </div>
         {% else %}

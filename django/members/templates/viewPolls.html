@@ -37,6 +37,7 @@
                             <label class="question-text" >{{ question.question }}</label>
                         </a>
                         <label class="date">Posted on {{question.date}}</label>
+                        <a href="/poll-results/?question_id={{question.id}}" class="result-button">View Results</a>
                     </div>
                 {% endfor %}
             </div>
