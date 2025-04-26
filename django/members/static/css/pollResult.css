@@ -18,7 +18,7 @@ h2 {
   color: #fff;
   margin-bottom: 20px;
   letter-spacing: 2px;
-  animation: typewriter 3s steps(30) 1s forwards, fadeIn 2s ease-out 1.5s;
+  animation: typewriter 3s steps(30) infinite, fadeIn 2s ease-out 1.5s infinite;
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
@@ -33,7 +33,7 @@ p {
 
 
 button {
-  background-color: #34db8d;
+  background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
   color: #fff;
   padding: 12px 25px;
   border: none;
@@ -72,9 +72,14 @@ button:hover {
   gap: 20px;
 }
 
+.percent{
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #eddfdf;
+}
 .choice-option {
   position: relative;
-  background: linear-gradient(to right, #3498db, #3498db) no-repeat, #34495e;
+  background: linear-gradient(to right, #1017d590, #3498db) no-repeat, #34495e;
   background-size: 0% 100%; /* default in case */
   background-repeat: no-repeat;
   background-position: left center;

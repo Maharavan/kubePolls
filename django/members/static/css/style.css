@@ -30,7 +30,7 @@ h1 {
   color: #fff;
   margin-bottom: 20px;
   letter-spacing: 2px;
-  animation: typewriter 3s steps(30) 1s forwards, fadeIn 2s ease-out 1.5s;
+  animation: typewriter 3s steps(30) infinite, fadeIn 2s ease-out 1.5s infinite;
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
@@ -93,7 +93,7 @@ input:focus {
 }
 
 button {
-  background-color: #3498db;
+  background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
   color: #fff;
   padding: 12px 25px;
   border: none;
@@ -108,7 +108,7 @@ button {
 .result-button {
   display: inline-block;
   margin-left: 20px; 
-  background-color: #43b6e0;
+  background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
   color: #fff;
   padding: 10px 20px;
   border: none;

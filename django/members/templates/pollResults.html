@@ -20,7 +20,8 @@
             <div class="choices">
                 {% for choice in choices %}
                     <label class="choice-option" style="background-size: {{ choice.percent }}% 100%;">
-                        {{ choice.choice }}  {{ choice.percent }}% 
+                        {{ choice.choice }}  
+                        <div class='percent'>{{ choice.percent }}% </div>
                     </label>
                     
                 {% endfor %}

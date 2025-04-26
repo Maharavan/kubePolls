@@ -7,11 +7,22 @@
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/livePoll.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        function check_radio_option(){
+            selected_choice = document.querySelector('input[name="select_choice"]:checked');
+            if (!selected_choice){
+                alert('Please select the choice');
+                return false;  // Prevent form submission
+            }
+            return true;  // Allow form submission
+        }
+    </script>
 </head>
 <body>
     <div class="poll-container">
         <h2><i class="fas fa-vote-yea"></i> KubePolls</h2>
-        <form method="POST" action="{% url 'live-polls' %}">
+        <form method="POST" action="{% url 'live-polls' %}" onsubmit="return check_radio_option();">
             {% csrf_token %}
             
             <div class="question">
