@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   padding: 20px;
-  animation: bodyAnimation 10s ease-in-out infinite;
+  background-image: url("../images/background.jpeg") ; 
   text-align: center;
   overflow-y: auto;
 }
@@ -51,7 +51,7 @@ button:hover {
 }
 
 .poll-container {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(23, 22, 22, 0.7);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -88,26 +88,6 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   cursor: default;
-}
-
-
-
-@keyframes bodyAnimation {
-  0% {
-    background: linear-gradient(135deg, #2980b9, #8e44ad);
-  }
-  25% {
-    background: linear-gradient(135deg, #8e44ad, #2c3e50);
-  }
-  50% {
-    background: linear-gradient(135deg, #2c3e50, #1abc9c);
-  }
-  75% {
-    background: linear-gradient(135deg, #1abc9c, #34495e);
-  }
-  100% {
-    background: linear-gradient(135deg, #2980b9, #8e44ad);
-  }
 }
 
 

@@ -72,12 +72,12 @@ def live_polls(request):
 
 def poll_results(request):
     question_id = request.GET.get('question_id')
-    
+    print(question_id)
     if not question_id:
         return HttpResponseBadRequest("No question ID provided.")
     
     try:
-        question = Choices.objects.get(id=question_id).question_id
+        question = VoteQuestions.objects.get(pk=question_id)
     except Choices.DoesNotExist:
         return HttpResponseBadRequest("Invalid question ID.")
     
