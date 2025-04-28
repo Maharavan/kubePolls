@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  kubePolls:
+    build:
+      context: django
+      dockerfile: Dockerfile
+    image: mahar628/kubepolls:v1
+    volumes:
+      - ./django:/app
+      - ./static:/app/static
+    ports:
+      - 8000:8000
+    command: ["gunicorn","--bind", "0.0.0.0:8000","votesystem.wsgi:application"]
