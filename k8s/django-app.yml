@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubePolls
+  template:
+    metadata:
+      labels:
+        app: kubePolls
+    spec:
+      containers:
+      - name: kubepolls
+        image: mahar628/kubepolls:v1
+        command: ["gunicorn", "--bind", "0.0.0.0:8000", "votesystem.wsgi:application"]
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+          requests:
+            cpu: "200m"
+            memory: "128Mi"
+        ports:
+        - containerPort: 8000
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: kubePolls
+  ports:
+  - port: 8000
+    targetPort: 8000
+
+
