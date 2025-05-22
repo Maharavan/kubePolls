@@ -1,0 +1,9 @@
+Day,Task,Details / Notes
+1,VPC Creation and Setup,Create VPC with public and private subnets, Internet Gateway; avoid NAT Gateway to save cost
+2,RDS Setup,Launch RDS (MySQL/PostgreSQL) t3.micro in private subnet; configure security groups and parameter groups
+3,EC2 Instance Launch,Launch EC2 t3.micro instance in public subnet; install Docker and necessary packages
+4,Dockerize & Deploy Django App,Dockerize Django app and deploy container on EC2 instance
+5,S3 Bucket Setup,Create S3 bucket for static and media files; configure Django to use S3 for storage
+6,Load Balancer Setup,Use EC2 Elastic IP + Security Groups; optionally set up Classic Load Balancer if free tier eligible
+7,CloudWatch Setup,Configure CloudWatch for basic monitoring and logging within free tier limits
+8,Testing and Debugging,Perform full app testing and fix networking, deployment or security issues
