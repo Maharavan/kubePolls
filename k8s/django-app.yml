@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: kubepolls
-        image: mahar628/kubepolls:v1
+        image: mahar628/kubepolls:latest
         command: ["gunicorn", "--bind", "0.0.0.0:8000", "votesystem.wsgi:application"]
         resources:
           limits:

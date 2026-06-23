@@ -15,7 +15,7 @@ jobs:
                    echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u "${{ secrets.DOCKER_USERNAME}}" --password-stdin
             - name: Build docker image
               run: |
-                    docker build -t kubepolls:latest .
+                    cd django && docker build -t kubepolls:latest .
             - name: Tag the image
               run: |
                     docker tag kubepolls:latest ${{secrets.DOCKER_USERNAME}}/kubepolls:latest

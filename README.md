@@ -298,7 +298,8 @@ kubePolls/
 │   ├── django-app.yml                  # Deployment (1 replica, resource limits) + ClusterIP Service
 │   └── django-ingress.yml              # NGINX Ingress — host: myapp.local
 ├── .github/
-│   └── workflow.yml                    # CI — build & push Docker image on push to main
+│   └── workflows/
+│       └── workflow.yml                # CI — build & push Docker image on push to main
 ├── docker-compose.yml                  # App + PostgreSQL with health-check
 └── README.md
 ```
@@ -423,25 +424,6 @@ minikube delete          # optional — removes the VM entirely
 ```
 
 ---
-
-## Contributing
-
-Pull requests are welcome. For major changes, open an issue first to discuss what you'd like to change.
-
-1. Fork the repo
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m 'feat: add your feature'`
-4. Push: `git push origin feature/your-feature`
-5. Open a Pull Request
-
----
-
-## License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
 <div align="center">
 
 Made with ☕ and Kubernetes by [Maharavan](https://github.com/Maharavan)
