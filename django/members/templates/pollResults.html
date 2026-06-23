@@ -2,15 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>KubePolls</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KubePolls — Results</title>
     {% load static %}
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/pollResult.css' %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+    <nav class="nav-bar">
+        <button class="nav-btn" onclick="history.back()" title="Go back"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="nav-btn" onclick="history.forward()" title="Go forward"><i class="fa-solid fa-arrow-right"></i></button>
+        <a href="/" class="nav-btn" title="Home"><i class="fa-solid fa-house"></i></a>
+    </nav>
+
     <div class="poll-container">
-        <h2><i class="fas fa-vote-yea"></i> KubePolls</h2>
+        <h2><i class="fa-solid fa-chart-bar"></i> Poll Results</h2>
 
         <div class="question">
             <p>{{ question_text }}</p>
@@ -19,15 +26,14 @@
         {% if choices %}
             <div class="choices">
                 {% for choice in choices %}
-                    <label class="choice-option" style="background-size: {{ choice.percent }}% 100%;">
-                        {{ choice.choice }}  
-                        <div class='percent'>{{ choice.percent }}% </div>
-                    </label>
-                    
+                    <div class="choice-option" style="--fill: {{ choice.percent }}%;">
+                        <span class="choice-label">{{ choice.choice }}</span>
+                        <span class="percent">{{ choice.percent }}%</span>
+                    </div>
                 {% endfor %}
             </div>
         {% else %}
-            <p class="error-msg">Unable to retrieve data.</p>
+            <p class="error-msg">Unable to load results. Please try again.</p>
         {% endif %}
     </div>
 </body>

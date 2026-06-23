@@ -2,29 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>KubePolls - Vote Now</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KubePolls — Vote</title>
     {% load static %}
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/livePoll.css' %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script>
-        function check_radio_option(){
-            selected_choice = document.querySelector('input[name="select_choice"]:checked');
-            if (!selected_choice){
-                alert('Please select the choice');
-                return false;  // Prevent form submission
+        function check_radio_option() {
+            const selected = document.querySelector('input[name="select_choice"]:checked');
+            if (!selected) {
+                alert('Please select a choice before submitting.');
+                return false;
             }
-            return true;  // Allow form submission
+            return true;
         }
     </script>
 </head>
 <body>
+    <nav class="nav-bar">
+        <button class="nav-btn" onclick="history.back()" title="Go back"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="nav-btn" onclick="history.forward()" title="Go forward"><i class="fa-solid fa-arrow-right"></i></button>
+        <a href="/" class="nav-btn" title="Home"><i class="fa-solid fa-house"></i></a>
+    </nav>
+
     <div class="poll-container">
-        <h2><i class="fas fa-vote-yea"></i> KubePolls</h2>
+        <h2><i class="fa-solid fa-vote-yea"></i> KubePolls</h2>
+
         <form method="POST" action="{% url 'live-polls' %}" onsubmit="return check_radio_option();">
             {% csrf_token %}
-            
+
             <div class="question">
                 <p>{{ question_text }}</p>
             </div>
@@ -39,9 +46,11 @@
                     {% endfor %}
                 </div>
 
-                <button type="submit" class="submit-btn">Submit Vote</button>
+                <button type="submit" class="submit-btn">
+                    <i class="fa-solid fa-check"></i> Submit Vote
+                </button>
             {% else %}
-                <p class="error-msg">Unable to retrieve data.</p>
+                <p class="error-msg">Unable to load choices. Please try again.</p>
             {% endif %}
         </form>
     </div>

@@ -10,4 +10,4 @@ RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "votesystem.wsgi:application"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 votesystem.wsgi:application"]

@@ -1,67 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>KubePolls</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KubePolls — Create Poll</title>
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script>
-      function addChoice() {
-        const choiceGroup = document.getElementById('choices-container');
-        const choiceCount = choiceGroup.querySelectorAll('.choice-container').length;
-        if (choiceCount < 5) {
-          const newChoice = document.createElement('div');
-          newChoice.classList.add('choice-container', 'fade-in');
-          newChoice.innerHTML = `
-            <input type="text" name="choice${choiceCount + 1}" placeholder="Choice ${choiceCount + 1}" required />
-            <button type="button" class="remove-btn" onclick="removeChoice(this)">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          `;
-          choiceGroup.appendChild(newChoice);
+        function addChoice() {
+            const container = document.getElementById('choices-container');
+            const count = container.querySelectorAll('.choice-container').length;
+            if (count >= 5) {
+                alert('Maximum 5 choices allowed.');
+                return;
+            }
+            const div = document.createElement('div');
+            div.classList.add('choice-container', 'fade-in');
+            div.innerHTML = `
+                <input type="text" name="choice${count + 1}" placeholder="Choice ${count + 1}" required />
+                <button type="button" class="remove-btn" onclick="removeChoice(this)" title="Remove choice">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            `;
+            container.appendChild(div);
         }
-        else{
-          alert('Choice limit exceeded');
-        }
-      }
 
-      function removeChoice(button) {
-        const container = button.parentElement;
-        container.classList.add('fade-out');
-        setTimeout(() => container.remove(), 300);
-      }
+        function removeChoice(btn) {
+            const item = btn.closest('.choice-container');
+            item.classList.add('fade-out');
+            setTimeout(() => item.remove(), 280);
+        }
     </script>
-  </head>
+</head>
+<body>
+    <nav class="nav-bar">
+        <button class="nav-btn" onclick="history.back()" title="Go back"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="nav-btn" onclick="history.forward()" title="Go forward"><i class="fa-solid fa-arrow-right"></i></button>
+        <a href="/" class="nav-btn" title="Home"><i class="fa-solid fa-house"></i></a>
+    </nav>
 
-  <body>
     <h1>KubePolls</h1>
-    <p>Create your poll below</p>
+    <p>Fill in your question and choices below</p>
 
     <form action="{% url 'poll-list' %}" method="POST" class="form-container">
-      {% csrf_token %}
-      <div>
-        <label for="set_question">Set Question:</label>
-        <input id="set_question" type="text" name="name_field" placeholder="Enter your question..." required />
-      </div>
+        {% csrf_token %}
 
-      <div class="choice-group" id="choices-container">
-        <label>Choices:</label>
-        <div class="choice-container">
-          <input type="text" name="choice1" placeholder="Choice 1" required />
+        <div style="width:100%;">
+            <label for="set_question">Question</label>
+            <input id="set_question" type="text" name="name_field"
+                   placeholder="e.g. What's your favourite language?" required />
         </div>
-        <div class="choice-container">
-          <input type="text" name="choice2" placeholder="Choice 2" required />
-        </div>
-      </div>
 
-      <button type="button" class="add-choice-btn" onclick="addChoice()" title="Add another choice">
-        <i class="fas fa-plus-circle"></i> Add Choice
-      </button>
-      <button type="submit">Submit</button>
+        <div class="choice-group" id="choices-container">
+            <label>Choices</label>
+            <div class="choice-container">
+                <input type="text" name="choice1" placeholder="Choice 1" required />
+                <button type="button" class="remove-btn invisible" title="Remove choice">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+            <div class="choice-container">
+                <input type="text" name="choice2" placeholder="Choice 2" required />
+                <button type="button" class="remove-btn invisible" title="Remove choice">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <button type="button" class="add-choice-btn" onclick="addChoice()">
+            <i class="fas fa-plus-circle"></i> Add Choice
+        </button>
+
+        <button type="submit">
+            <i class="fas fa-paper-plane"></i> Create Poll
+        </button>
     </form>
-  </body>
+</body>
 </html>
